@@ -270,6 +270,7 @@ class Attention(torch.nn.Module):
         k = k.permute(0, 2, 1, 3)
         v = v.permute(0, 2, 1, 3)
 
+        self.ab = self.ab.to('cuda:0')
         attn = (
             (q @ k.transpose(-2, -1)) * self.scale
             +
